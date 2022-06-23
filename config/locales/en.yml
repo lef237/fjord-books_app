@@ -32,3 +32,6 @@
 en:
   hello: "Hello world"
   Are you sure?: "Are you sure?"
+  Book was successfully created: Book was successfully created.
+  Book was successfully updated: Book was successfully updated.
+  Book was successfully destroyed: Book was successfully destroyed.

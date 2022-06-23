@@ -22,6 +22,7 @@ ja:
   Are you sure?: 本当にいいですか？
   Back: 戻る
   Editing Book: 本を編集する
+  #「Book was successfully created.」にしてはいけない。キーに最後のドットがあると、メッセージが翻訳されない（translation missing: ja）。
   Book was successfully created: 本の作成に成功しました。
   Book was successfully updated: 本の更新に成功しました。
   Book was successfully destroyed: 本の削除に成功しました。
