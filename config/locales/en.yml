@@ -30,12 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  Are you sure?: "Are you sure?"
-  Book was successfully created: Book was successfully created.
-  Book was successfully updated: Book was successfully updated.
-  Book was successfully destroyed: Book was successfully destroyed.
-
   books:
     index:
       title: Books
@@ -52,3 +46,9 @@ en:
     update: Update
     back: Back
     are_you_sure: Are you sure?
+
+  controllers:
+    message: "%{model_name} was successfully %{action}"
+    create: created.
+    update: updated.
+    destroy: destroyed.

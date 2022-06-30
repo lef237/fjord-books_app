@@ -25,8 +25,10 @@ ja:
     create: 作成
     update: 更新
     back: 戻る
-    are_you_sure: 本当にいいですか？
+    are_you_sure: 本当によろしいですか？
 
-  controller:
-    messages: のに成功しました。
-
+  controllers:
+    message: "%{model_name}の%{action}に成功しました。"
+    create: 作成
+    update: 更新
+    destroy: 削除
