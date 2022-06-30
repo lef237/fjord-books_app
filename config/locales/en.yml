@@ -30,4 +30,25 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  books:
+    index:
+      title: Books
+    new:
+      title: New Book
+    edit:
+      title: Editing Book
+
+  views:
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    create: Create
+    update: Update
+    back: Back
+    are_you_sure: Are you sure?
+
+  controllers:
+    message: "%{model_name} was successfully %{action}"
+    create: created.
+    update: updated.
+    destroy: destroyed.
