@@ -35,3 +35,20 @@ en:
   Book was successfully created: Book was successfully created.
   Book was successfully updated: Book was successfully updated.
   Book was successfully destroyed: Book was successfully destroyed.
+
+  books:
+    index:
+      title: Books
+    new:
+      title: New Book
+    edit:
+      title: Editing Book
+
+  views:
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    create: Create
+    update: Update
+    back: Back
+    are_you_sure: Are you sure?
