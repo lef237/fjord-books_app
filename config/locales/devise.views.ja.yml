@@ -27,6 +27,8 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザー
+
+  # ここは元々「devise:」だったが、「users:」へと直さないとymlファイルが反映されない。なぜなら「rails g devise:i18n:views user」でusersディレクトリ内にファイルを作成したから。
   users:
     confirmations:
       confirmed: メールアドレスが確認できました。
