@@ -15,3 +15,11 @@ ja:
         postcode: 郵便番号
         address: 住所
         profile: プロフィール
+  navbar:
+    edit_profile: プロフィールを編集
+    logout: ログアウト
+    users: ユーザー一覧
+    my_page: マイページ
+    books: 本一覧
+    sign_up: サインアップ
+    login: ログイン
