@@ -34,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener_web', '~> 2.0'
   gem 'faker'
   gem 'i18n_generators'
   gem 'listen', '~> 3.3'

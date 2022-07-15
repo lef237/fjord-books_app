@@ -76,5 +76,7 @@ Rails.application.configure do
 
   # デフォルトの url オプションを定義した。
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # letter_opener_webを使えるようにした
+  config.action_mailer.delivery_method = :letter_opener_web
 
 end
