@@ -3,8 +3,8 @@
 
 <h1><%= @user.username %>のユーザーページ</h1>
 
-<p>名前 : <%= @user.username %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>郵便番号 : <%= @user.postcode %></p>
-<p>住所 : <%= @user.address %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<p><%= User.human_attribute_name(:username) %> : <%= @user.username %></p>
+<p><%= User.human_attribute_name(:email) %> : <%= @user.email %></p>
+<p><%= User.human_attribute_name(:postcode) %> : <%= @user.postcode %></p>
+<p><%= User.human_attribute_name(:address) %> : <%= @user.address %></p>
+<p><%= User.human_attribute_name(:profile) %> : <%= @user.profile %></p>
