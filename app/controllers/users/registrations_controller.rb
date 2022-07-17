@@ -22,9 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    if account_update_params[:avatar].present?
-      resource.avatar.attach(account_update_params[:avatar])
-    end
+    resource.avatar.attach(account_update_params[:avatar]) if account_update_params[:avatar].present?
   end
 
   # DELETE /resource
