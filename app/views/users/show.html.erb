@@ -25,6 +25,8 @@
   <%= @user.self_introduction %>
 </p>
 
+<%= image_tag @user.avatar if @user.avatar.present? %><br>
+
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
