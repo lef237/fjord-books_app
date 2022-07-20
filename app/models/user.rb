@@ -6,23 +6,24 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :follower, class_name: "FollowRelationship", foreign_key: "follower_id", dependent: :destroy # followerテーブル（follower_idを起点にしたテーブル）
-  has_many :followed, class_name: "FollowRelationship", foreign_key: "followed_id", dependent: :destroy # followedテーブル（followed_idを起点にしたテーブル）
-  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+  has_many :follower_relationships, class_name: "FollowRelationship", foreign_key: "follower_id", dependent: :destroy # follower_relationshipsテーブル（follower_idを起点にしたテーブル）
+  has_many :followed_relationships, class_name: "FollowRelationship", foreign_key: "followed_id", dependent: :destroy # followed_relationshipsテーブル（followed_idを起点にしたテーブル）
+  has_many :followings, through: :follower_relationships, source: :followed # 自分がフォローしている人
+  has_many :followers, through: :followed_relationships, source: :follower # 自分をフォローしている人
 
-  # ユーザーをフォローする
-  def follow(user_id)
-    follower.create(followed_id: user_id)
+  def follow(other_user)
+    unless self == other_user
+      self.follower_relationships.find_or_create_by(followed_id: other_user.id)
+    end
   end
 
-  # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+  def unfollow(other_user)
+    relationship = self.follower_relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
   end
 
-  # フォローしていればtrueを返す
-  def following?(user)
-    following_user.include?(user)
+  def following?(other_user)
+    self.followings.include?(other_user)
   end
+
 end
