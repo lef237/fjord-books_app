@@ -1,18 +1,22 @@
 <h3><%= @title %></h3>
 <% if @users.any? %>
-    <% @users.each do |user| %>
-      <tr>
-        <th>
-          <% if user.avatar.attached? %>
-            <%= image_tag user.avatar.variant(resize_to_fill: [30, 30])%>
-          <% end %>
-        </th>
-        <td><%= user.email %></td>
-        <td><%= user.name %></td>
-        <td><%= user.postal_code %></td>
-        <td><%= user.address %></td>
-        <td><%= link_to t('views.common.show'), user %></td>
-      </tr>
-    <% end %>
+    <table>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <th>
+              <% if user.avatar.attached? %>
+                <%= image_tag user.avatar.variant(resize_to_fill: [30, 30])%>
+              <% end %>
+            </th>
+            <td><%= user.email %></td>
+            <td><%= user.name %></td>
+            <td><%= user.postal_code %></td>
+            <td><%= user.address %></td>
+            <td><%= link_to t('views.common.show'), user %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <table>
   <%= paginate @users %>
 <% end %>

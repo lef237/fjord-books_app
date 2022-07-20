@@ -6,10 +6,14 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :follower_relationships, class_name: "FollowRelationship", foreign_key: "follower_id", dependent: :destroy # follower_relationshipsテーブル（follower_idを起点にしたテーブル）
-  has_many :followed_relationships, class_name: "FollowRelationship", foreign_key: "followed_id", dependent: :destroy # followed_relationshipsテーブル（followed_idを起点にしたテーブル）
-  has_many :followings, through: :follower_relationships, source: :followed # 自分がフォローしている人
-  has_many :followers, through: :followed_relationships, source: :follower # 自分をフォローしている人
+  # follower_relationshipsテーブル（follower_idを起点にしたテーブル）
+  has_many :follower_relationships, class_name: 'FollowRelationship', foreign_key: 'follower_id', dependent: :destroy
+  # followed_relationshipsテーブル（followed_idを起点にしたテーブル）
+  has_many :followed_relationships, class_name: 'FollowRelationship', foreign_key: 'followed_id', dependent: :destroy
+  # 自分がフォローしている人
+  has_many :followings, through: :follower_relationships, source: :followed
+  # 自分をフォローしている人
+  has_many :followers, through: :followed_relationships, source: :follower
 
   # ユーザーをフォローする
   def follow(other_user)
@@ -25,5 +29,4 @@ class User < ApplicationRecord
   def following?(other_user)
     followings.include?(other_user)
   end
-
 end
