@@ -4,6 +4,11 @@
 
 <%= render 'follow_form' %>
 
+<tr>
+  <td>フォロー数: <%= @user.followings.count %></td>
+  <td>フォロワー数: <%= @user.followers.count %></td>
+</tr>
+
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
