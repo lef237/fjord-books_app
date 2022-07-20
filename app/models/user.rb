@@ -12,18 +12,18 @@ class User < ApplicationRecord
   has_many :followers, through: :followed_relationships, source: :follower # 自分をフォローしている人
 
   # ユーザーをフォローする
-  def follow(user_id)
-    follower_relationships.create(followed_id: user_id)
+  def follow(other_user)
+    followings << other_user
   end
 
-  # ユーザーのフォローを外す
-  def unfollow(user_id)
-    follower_relationships.find_by(followed_id: user_id).destroy
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    follower_relationships.find_by(followed_id: other_user.id).destroy
   end
 
   # フォローしていればtrueを返す
-  def following?(user)
-    followings.include?(user)
+  def following?(other_user)
+    followings.include?(other_user)
   end
 
 end
