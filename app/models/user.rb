@@ -11,19 +11,19 @@ class User < ApplicationRecord
   has_many :followings, through: :follower_relationships, source: :followed # 自分がフォローしている人
   has_many :followers, through: :followed_relationships, source: :follower # 自分をフォローしている人
 
-  def follow(other_user)
-    unless self == other_user
-      self.follower_relationships.find_or_create_by(followed_id: other_user.id)
-    end
+  # ユーザーをフォローする
+  def follow(user_id)
+    follower_relationships.create(followed_id: user_id)
   end
 
-  def unfollow(other_user)
-    relationship = self.follower_relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+  # ユーザーのフォローを外す
+  def unfollow(user_id)
+    follower_relationships.find_by(followed_id: user_id).destroy
   end
 
-  def following?(other_user)
-    self.followings.include?(other_user)
+  # フォローしていればtrueを返す
+  def following?(user)
+    followings.include?(user)
   end
 
 end
