@@ -77,6 +77,4 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener_web
 
-  # アバター画像のUPDATE時にSQLite3::BusyException: database is locked を防ぐため
-  config.active_job.queue_adapter = :inline
 end
