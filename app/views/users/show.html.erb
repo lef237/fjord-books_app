@@ -25,6 +25,11 @@
   <%= @user.self_introduction %>
 </p>
 
+<p>
+  <strong><%= User.human_attribute_name(:avatar) %>:</strong>
+  <%= image_tag @user.avatar.variant(resize: '100x100') if @user.avatar.present? %><br>
+</p>
+
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
