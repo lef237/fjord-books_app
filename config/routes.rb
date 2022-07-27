@@ -12,3 +12,5 @@ Rails.application.routes.draw do
     end
   end
 end
+
+# TODO：resources :reports の位置を後で確認する
