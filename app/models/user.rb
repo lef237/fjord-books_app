@@ -28,6 +28,6 @@ class User < ApplicationRecord
 
   # フォローしていればtrueを返す
   def following?(other_user)
-    followings.include?(other_user)
+    followings.exists?(id: other_user.id)
   end
 end
