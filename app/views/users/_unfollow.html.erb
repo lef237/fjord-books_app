@@ -1,4 +1,1 @@
-<%= form_with(model: current_user.follower_relationships.find_by(followed_id: user.id),
-            html: { method: :delete }, local: true) do |f| %>
-  <%= f.submit "Unfollow", class: "btn btn-default" %>
-<% end %>
+<%= button_to "フォローを外す", user_follow_relationship_path(user), method: :delete %>
