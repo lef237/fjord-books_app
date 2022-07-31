@@ -1,5 +1,9 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
+<%= render partial: 'users/stats', locals: { user: @user } %>
+
+<%= render partial: 'follow_form', locals: { user: @user } %>
+
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
