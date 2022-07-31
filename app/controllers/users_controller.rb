@@ -11,14 +11,14 @@ class UsersController < ApplicationController
 
   def followings
     @title = 'Following'
-    @user  = User.includes(:followings).find(params[:id])
+    @user  = User.includes(followings: { avatar_attachment: :blob }).find(params[:id])
     @users = @user.followings.page(params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = 'Followers'
-    @user  = User.includes(:followers).find(params[:id])
+    @user  = User.includes(followers: { avatar_attachment: :blob }).find(params[:id])
     @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
