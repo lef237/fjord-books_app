@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show edit update destroy ]
+  before_action :ensure_user, only: [:edit, :update, :destroy]
 
   # GET /reports or /reports.json
   def index
@@ -68,4 +69,11 @@ class ReportsController < ApplicationController
     def report_params
       params.require(:report).permit(:title, :content, :user_id)
     end
+
+    def ensure_user
+      @reports = current_user.reports
+      @report = @reports.find_by(id: params[:id])
+      redirect_to new_report_path unless @report
+    end
+
 end
