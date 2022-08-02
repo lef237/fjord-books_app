@@ -17,4 +17,6 @@
   <%= link_to 'Edit', edit_report_path(@report) %> |
 <% end %>
 
+<%= render 'comments/comments' commentable: @report, comments: @comments %>
+
 <%= link_to 'Back', reports_path %>

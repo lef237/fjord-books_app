@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_commentable
 
   def create
+    # @commentはここでnewしても大丈夫？
     @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
