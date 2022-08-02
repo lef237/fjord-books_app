@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :set_report
+
   def create
-    @report = Report.find(params[:report_id])
     @comment = @report.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
@@ -11,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @report = Report.find(params[:report_id])
     @comment = Comment.find(params[:id])
     if @comment.user_id == current_user.id
       @comment.destroy
@@ -23,7 +23,12 @@ class CommentsController < ApplicationController
 
   private
 
+  def set_report
+    @report = Report.find(params[:report_id])
+  end
+
   def comment_params
     params.require(:comment).permit(:comment)
   end
+
 end
