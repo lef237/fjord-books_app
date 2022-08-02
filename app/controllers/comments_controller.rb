@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
 
   def create
     # @commentはここでnewしても大丈夫？
-    @comment = @commentable.comments.new(comment_params)
-    @comment.user_id = current_user.id
+    @comment = current_user.comments.new(comment_params)
+    # @comment.user_id = current_user.id
     if @comment.save
-      format.html { redirect_to request.referer, notice: "コメントを投稿しました" }
+      redirect_to request.referer, notice: "コメントを投稿しました"
     else
-      format.html { redirect_to request.referer, notice: "コメントの投稿に失敗しました" }
+      redirect_to request.referer, notice: "コメントの投稿に失敗しました"
     end
   end
 
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.user_id == current_user.id
       @comment.destroy
-      format.html { redirect_to request.referer, notice: "コメントを削除しました" }
+      redirect_to request.referer, notice: "コメントを削除しました"
     else
       redirect_to request.referer
     end
@@ -25,7 +25,8 @@ class CommentsController < ApplicationController
   private
 
   def set_commentable
-    @commentable = Commentable.find(params[:commentable_id])
+    @commentable = Book.find_by(params[:commentable_id]) if Book.find_by(params[:commentable_id])
+    @commentable = Report.find_by(params[:commentable_id]) if Report.find_by(params[:commentable_id])
   end
 
   def comment_params
