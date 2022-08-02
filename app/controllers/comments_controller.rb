@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :set_report
+  before_action :set_commentable
 
   def create
-    @comment = @report.comments.new(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       format.html { redirect_to request.referer, notice: "コメントを投稿しました" }
@@ -23,8 +23,8 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_report
-    @report = Report.find(params[:report_id])
+  def set_commentable
+    @commentable = Commentable.find(params[:commentable_id])
   end
 
   def comment_params
