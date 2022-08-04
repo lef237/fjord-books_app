@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :reports
+  resources :reports do
+    resources :comments, only: [:create, :destroy], module: :reports
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   devise_for :users
   root to: 'books#index'
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
       resources :followers, only: [:index]
     end
   end
-  resources :comments, only: [:create, :destroy]
+  # resources :comments, only: [:create, :destroy]
 end
 
 # TODO：resources :reports の位置を後で確認する
