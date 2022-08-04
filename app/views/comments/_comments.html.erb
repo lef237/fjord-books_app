@@ -1,7 +1,6 @@
 <%# ここのmodel:は@commentのほうがいい？ %>
 <%= form_with model: [commentable, comment] do |f| %>
-  <%= f.text_area :comment %>
-  <%# <%= f.hidden_field :commentable_id, value: comment.id %>
+  <%= f.text_area :comment, placeholder: 'コメントする' %>
   <%= f.submit 'コメントを投稿' %>
 <% end %>
 
@@ -15,9 +14,9 @@
   <tbody>
     <% comments.each do |comment| %>
       <tr>
-        <td><%= comment.user %></td>
+        <td><%= comment.user.name %></td>
         <td><%= comment.comment %></td>
-        <td><%= link_to "コメントを削除", comment_path(comment), method: :delete %></td>
+        <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
