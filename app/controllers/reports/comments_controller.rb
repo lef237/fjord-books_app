@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Reports::CommentsController < ApplicationController
   before_action :set_commentable
 
   def create

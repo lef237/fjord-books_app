@@ -1,6 +1,6 @@
 <%# ここのmodel:は@commentのほうがいい？ %>
 <%= form_with model: [commentable, comment] do |f| %>
-  <%= f.text_area :comment, placeholder: 'コメントする' %>
+  <%= f.text_area :comment %>
   <%= f.submit 'コメントを投稿' %>
 <% end %>
 
@@ -12,12 +12,17 @@
     </tr>
   </thead>
   <tbody>
-    <% comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.name if comment.user.name %></td>
-        <td><%= comment.comment %></td>
-        <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
-      </tr>
+    <%# empty?メソッドではエラーが出るので注意 %>
+    <% if comments.present? %>
+      <%= 'コメントがありません' %>
+    <% else %>
+      <% comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.comment %></td>
+          <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
