@@ -14,7 +14,7 @@
   <tbody>
     <% comments.each do |comment| %>
       <tr>
-        <td><%= comment.user.name %></td>
+        <td><%= comment.user.name if comment.user.name %></td>
         <td><%= comment.comment %></td>
         <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
       </tr>
