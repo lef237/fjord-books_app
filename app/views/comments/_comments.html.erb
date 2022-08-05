@@ -12,17 +12,12 @@
     </tr>
   </thead>
   <tbody>
-    <%# empty?メソッドではエラーが出るので注意 %>
-    <% if comments.present? %>
-      <%= 'コメントがありません' %>
-    <% else %>
-      <% comments.each do |comment| %>
-        <tr>
-          <td><%= comment.user.name %></td>
-          <td><%= comment.comment %></td>
-          <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
-        </tr>
-      <% end %>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment %></td>
+        <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @comments = @report.comments
+    @comments = @report.comments.includes(:user)
     p @comments
     # 特定のレポートに紐付けられたコメント群に対して新しいインスタンスを作成するから下の記述になる。form_withで使うためにnewしただけなので、データは保存されていない（中身はぜんぶnil）。
     @comment = @report.comments.new
