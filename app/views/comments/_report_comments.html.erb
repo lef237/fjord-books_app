@@ -1,4 +1,3 @@
-<%# ここのmodel:は@commentのほうがいい？ %>
 <%= form_with model: [commentable, comment] do |f| %>
   <%= f.text_area :comment %>
   <%= f.submit Comment.human_attribute_name(:submit) %>
@@ -12,14 +11,12 @@
       <th><%= Comment.human_attribute_name(:time) %></th>
   </thead>
   <tbody>
-    <%# コメントがないときにコメントがないことを表示する %>
     <% if comments.present? %>
       <% comments.each do |comment| %>
         <tr>
           <td><%= comment.user.name.empty? ? comment.user.email : comment.user.name %></td>
           <td><%= comment.comment %></td>
           <td><%= comment.user.created_at %></td>
-          <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
           <td><%= link_to Comment.human_attribute_name(:delete), report_comment_path(comment), method: :delete if current_user == comment.user %></td>
         </tr>
       <% end %>

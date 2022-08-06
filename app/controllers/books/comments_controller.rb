@@ -2,13 +2,8 @@ class Books::CommentsController < ApplicationController
   before_action :set_commentable, only: %i[create]
 
   def create
-    # 特定のレポートもしくはブックのコメント一覧に対してnewしており、その初期値にcomment_paramsで:commentなどを渡している。特定のレポート／ユーザーに対してnewするため、commentable_typeとcommentable_idは自動的に入る。しかし、まだuser_idは入っていない。
     @comment = @commentable.comments.new(comment_params)
-
-    #user_idを@commentの中に代入する
-    # @comment = current_user.comments.new(comment_params)でも大丈夫そう？→あとで確認する
     @comment.user_id = current_user.id
-
     if @comment.save
       redirect_to request.referer, notice: "コメントを投稿しました"
     else
@@ -17,7 +12,6 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    # report_idで検索する。
     @comment = Comment.find(params[:book_id])
     if @comment.user_id == current_user.id
       @comment.destroy
@@ -30,7 +24,6 @@ class Books::CommentsController < ApplicationController
   private
 
   def set_commentable
-    # Routesを確認したときに、Pathの中の「:book_id」や「:report_id」と、POSTとして送られたデータがparamsとして送られる。その中にuser_idは入っていないため、このファイル内でnewする必要がある。
     @commentable = Book.find(params[:book_id])
   end
 
