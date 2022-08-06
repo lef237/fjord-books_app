@@ -13,13 +13,17 @@
   </thead>
   <tbody>
     <%# コメントがないときにコメントがないことを表示する %>
-    <% comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.name %></td>
-        <td><%= comment.comment %></td>
-        <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
-        <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
-      </tr>
+    <% if comments.present? %>
+      <% comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.comment %></td>
+          <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
+          <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <p>まだコメントはありません。</p>
     <% end %>
   </tbody>
 </table>
