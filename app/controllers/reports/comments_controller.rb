@@ -1,5 +1,5 @@
 class Reports::CommentsController < ApplicationController
-  before_action :set_commentable
+  before_action :set_commentable, only: %i[create]
 
   def create
     # 特定のレポートもしくはブックのコメント一覧に対してnewしており、その初期値にcomment_paramsで:commentなどを渡している。特定のレポート／ユーザーに対してnewするため、commentable_typeとcommentable_idは自動的に入る。しかし、まだuser_idは入っていない。
@@ -17,7 +17,8 @@ class Reports::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(params[:report_id])
+    # report_idで検索する。
+    @comment = Comment.find(params[:report_id])
     if @comment.user_id == current_user.id
       @comment.destroy
       redirect_to request.referer, notice: "コメントを削除しました"
