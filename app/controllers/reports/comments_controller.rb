@@ -30,8 +30,7 @@ class Reports::CommentsController < ApplicationController
 
   def set_commentable
     # Routesを確認したときに、Pathの中の「:book_id」や「:report_id」と、POSTとして送られたデータがparamsとして送られる。その中にuser_idは入っていないため、このファイル内でnewする必要がある。
-    @commentable = Book.find_by(params[:book_id]) if Book.find_by(params[:book_id])
-    @commentable = Report.find_by(params[:report_id]) if Report.find_by(params[:report_id])
+    @commentable = Report.find(params[:report_id])
   end
 
   def comment_params
