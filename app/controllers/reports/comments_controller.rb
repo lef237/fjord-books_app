@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reports::CommentsController < ApplicationController
   before_action :set_commentable, only: %i[create]
 
@@ -5,9 +7,9 @@ class Reports::CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer, notice: "コメントを投稿しました"
+      redirect_to request.referer, notice: 'コメントを投稿しました'
     else
-      redirect_to request.referer, notice: "コメントの投稿に失敗しました"
+      redirect_to request.referer, notice: 'コメントの投稿に失敗しました'
     end
   end
 
@@ -15,7 +17,7 @@ class Reports::CommentsController < ApplicationController
     @comment = Comment.find(params[:report_id])
     if @comment.user_id == current_user.id
       @comment.destroy
-      redirect_to request.referer, notice: "コメントを削除しました"
+      redirect_to request.referer, notice: 'コメントを削除しました'
     else
       redirect_to request.referer
     end
@@ -30,5 +32,4 @@ class Reports::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment, :book_id, :report_id)
   end
-
 end
