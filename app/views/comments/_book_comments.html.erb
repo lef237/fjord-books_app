@@ -9,6 +9,7 @@
     <tr>
       <th>コメント投稿者</th>
       <th>コメント内容</th>
+      <th>投稿日時</th>
     </tr>
   </thead>
   <tbody>
@@ -16,8 +17,9 @@
     <% if comments.present? %>
       <% comments.each do |comment| %>
         <tr>
-          <td><%= comment.user.name %></td>
+          <td><%= comment.user.name.empty? ? comment.user.email : comment.user.name %></td>
           <td><%= comment.comment %></td>
+          <td><%= comment.user.created_at %></td>
           <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
           <td><%= link_to "コメントを削除", book_comment_path(comment), method: :delete if current_user == comment.user %></td>
         </tr>
