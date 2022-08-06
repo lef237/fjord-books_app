@@ -1,0 +1,29 @@
+<%# ここのmodel:は@commentのほうがいい？ %>
+<%= form_with model: [commentable, comment] do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit 'コメントを投稿' %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>コメント投稿者</th>
+      <th>コメント内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%# コメントがないときにコメントがないことを表示する %>
+    <% if comments.present? %>
+      <% comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.comment %></td>
+          <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
+          <td><%= link_to "コメントを削除", book_comment_path(comment), method: :delete if current_user == comment.user %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <p>まだコメントはありません。</p>
+    <% end %>
+  </tbody>
+</table>

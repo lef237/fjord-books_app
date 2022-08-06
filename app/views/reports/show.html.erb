@@ -19,5 +19,5 @@
 
 <%= link_to 'Back', reports_path %>
 
-<%= render partial: 'comments/comments', locals: {comment: @comment, comments: @comments, commentable: @report} %>
+<%= render partial: 'comments/report_comments', locals: {comment: @comment, comments: @comments, commentable: @report} %>
 
