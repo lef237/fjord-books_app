@@ -19,7 +19,7 @@
           <td><%= comment.user.name %></td>
           <td><%= comment.comment %></td>
           <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
-          <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete %></td>
+          <td><%= link_to "コメントを削除", report_comment_path(comment), method: :delete if current_user == comment.user %></td>
         </tr>
       <% end %>
     <% else %>
