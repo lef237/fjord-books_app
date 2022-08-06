@@ -1,15 +1,15 @@
 <%# ここのmodel:は@commentのほうがいい？ %>
 <%= form_with model: [commentable, comment] do |f| %>
   <%= f.text_area :comment %>
-  <%= f.submit 'コメントを投稿' %>
+  <%= f.submit Comment.human_attribute_name(:submit) %>
 <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>コメント投稿者</th>
-      <th>コメント内容</th>
-      <th>投稿日時</th>
+      <th><%= Comment.human_attribute_name(:user) %></th>
+      <th><%= Comment.human_attribute_name(:comment) %></th>
+      <th><%= Comment.human_attribute_name(:time) %></th>
     </tr>
   </thead>
   <tbody>
@@ -21,11 +21,11 @@
           <td><%= comment.comment %></td>
           <td><%= comment.user.created_at %></td>
           <%# カレントユーザーではないときは削除ボタンが表示できないようにする %>
-          <td><%= link_to "コメントを削除", book_comment_path(comment), method: :delete if current_user == comment.user %></td>
+          <td><%= link_to Comment.human_attribute_name(:delete), book_comment_path(comment), method: :delete if current_user == comment.user %></td>
         </tr>
       <% end %>
     <% else %>
-      <p>まだコメントはありません。</p>
+      <p><%= Comment.human_attribute_name(:nothing) %></p>
     <% end %>
   </tbody>
 </table>

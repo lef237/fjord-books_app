@@ -22,3 +22,10 @@ ja:
         title: 題名
         content: 本文
         user: ユーザID
+      comment:
+        user: コメント投稿者
+        comment: コメント内容
+        time: 投稿日時
+        submit: コメントを投稿
+        delete: コメントを削除
+        nothing: まだコメントはありません。
