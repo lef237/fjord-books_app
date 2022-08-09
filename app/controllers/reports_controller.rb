@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    # ここでincludesを使わないと、viewファイルのcomment.user.nameでなぜかエラーが出てしまう
+    # ここでincludesを使わないと、viewファイルのcomment.user.nameやcomment.user.emailでなぜかエラーが出てしまう
     @comments = @report.comments.includes(:user)
     @comment = @report.comments.new
   end
