@@ -9,6 +9,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    # ここでincludesを使わないと、viewファイルのcomment.user.nameでなぜかエラーが出てしまう
     @comments = @report.comments.includes(:user)
     @comment = @report.comments.new
   end
