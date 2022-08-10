@@ -12,9 +12,8 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    # ここでincludesを使わないと、viewファイルのcomment.user.nameやcomment.user.emailでなぜかエラーが出てしまう
-    @comments = @book.comments.includes(:user)
-    @comment = @book.comments.new
+    @comments = @book.comments
+    @comment = Comment.new
   end
 
   # GET /books/new
