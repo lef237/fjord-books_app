@@ -1,6 +1,6 @@
 <%= form_with model: [commentable, comment] do |f| %>
   <%= f.text_area :comment %>
-  <%= f.submit Comment.human_attribute_name(:submit) %>
+  <%= f.submit t('views.common.submit') %>
 <% end %>
 
 <table>
@@ -8,7 +8,7 @@
     <tr>
       <th><%= Comment.human_attribute_name(:user) %></th>
       <th><%= Comment.human_attribute_name(:comment) %></th>
-      <th><%= Comment.human_attribute_name(:time) %></th>
+      <th><%= t('views.common.post_time') %></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +18,7 @@
           <td><%= comment.user.name_or_email %></td>
           <td><%= comment.comment %></td>
           <td><%= comment.created_at %></td>
-          <td><%= link_to Comment.human_attribute_name(:delete), book_comment_path(commentable, comment), method: :delete if current_user == comment.user %></td>
+          <td><%= link_to t('views.common.destroy'), book_comment_path(commentable, comment), method: :delete if current_user == comment.user %></td>
         </tr>
       <% end %>
     <% else %>
