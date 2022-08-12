@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show]
-  before_action :ensure_user, only: %i[edit update destroy]
+  before_action :set_report, only: %i[edit update destroy]
 
   def index
     @reports = Report.order(:id).page(params[:page])
   end
 
   def show
+    @report = Report.find(params[:id])
     @comments = @report.comments
     @comment = Comment.new
   end
@@ -52,16 +52,11 @@ class ReportsController < ApplicationController
   private
 
   def set_report
-    @report = Report.find(params[:id])
+    @report = current_user.reports.find_by(id: params[:id])
+    redirect_to new_report_path unless @report
   end
 
   def report_params
     params.require(:report).permit(:title, :content, :user_id)
-  end
-
-  def ensure_user
-    @reports = current_user.reports
-    @report = @reports.find_by(id: params[:id])
-    redirect_to new_report_path unless @report
   end
 end

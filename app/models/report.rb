@@ -2,6 +2,6 @@
 
 class Report < ApplicationRecord
   belongs_to :user
-  validates :content, presence: true
   has_many :comments, as: :commentable, dependent: :destroy
+  validates :content, presence: true
 end

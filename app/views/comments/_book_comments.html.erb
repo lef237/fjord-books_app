@@ -15,7 +15,7 @@
     <% if comments.present? %>
       <% comments.each do |comment| %>
         <tr>
-          <td><%= comment.user.name.empty? ? comment.user.email : comment.user.name %></td>
+          <td><%= comment.user.name_or_email %></td>
           <td><%= comment.comment %></td>
           <td><%= comment.created_at %></td>
           <td><%= link_to Comment.human_attribute_name(:delete), book_comment_path(commentable, comment), method: :delete if current_user == comment.user %></td>
