@@ -14,13 +14,9 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:book_id])
-    if @comment.user_id == current_user.id
-      @comment.destroy
-      redirect_to request.referer, notice: 'コメントを削除しました'
-    else
-      redirect_to request.referer
-    end
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy
+    redirect_to request.referer, notice: 'コメントを削除しました'
   end
 
   private
