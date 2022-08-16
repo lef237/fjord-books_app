@@ -15,7 +15,7 @@ class Books::CommentsController < ApplicationController
 
   def destroy
     @comment = current_user.comments.find(params[:id])
-    @comment.destroy
+    @comment.destroy!
     redirect_to request.referer, notice: 'コメントを削除しました'
   end
 
