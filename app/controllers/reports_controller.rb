@@ -52,8 +52,7 @@ class ReportsController < ApplicationController
   private
 
   def set_report
-    @report = current_user.reports.find_by(id: params[:id])
-    redirect_to new_report_path unless @report
+    @report = current_user.reports.find(params[:id])
   end
 
   def report_params
