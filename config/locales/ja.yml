@@ -218,6 +218,8 @@ ja:
       title_show: "%{name}の詳細"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
+      post_time: 投稿日時
+      submit: 送信
     pagination:
       first: '最初'
       last: '最後'
