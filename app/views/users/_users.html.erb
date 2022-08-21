@@ -16,7 +16,7 @@
       <tr>
         <th>
           <% if user.avatar.attached? %>
-            <%= image_tag user.avatar.variant(resize_to_fill: [30, 30])%>
+            <%= image_tag user.avatar.variant(resize_to_fill: [30, 30]) %>
           <% end %>
         </th>
         <td><%= user.email %></td>
