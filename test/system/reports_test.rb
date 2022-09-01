@@ -1,4 +1,6 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
@@ -10,10 +12,10 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'ログイン'
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit reports_url
 
-    assert_selector "h1", text: "日報"
+    assert_selector 'h1', text: '日報'
   end
 
   test 'creating a Report' do

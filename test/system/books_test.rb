@@ -30,7 +30,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_text 'Ruby超入門'
     assert_text 'とてもわかり易い！'
     assert_text '五十嵐さん'
-    take_screenshot #この画面のスクリーンショットを撮れる
+    take_screenshot # この画面のスクリーンショットを撮れる
   end
 
   test 'updating a Book' do
