@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:report_alice)
+    @report = reports(:alice_report)
 
     visit root_path
     fill_in 'Eメール', with: 'alice@example.com'
