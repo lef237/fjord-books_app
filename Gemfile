@@ -35,6 +35,7 @@ end
 
 group :development do
   gem 'dummy_text_jp'
+  gem 'erb_lint', require: false
   gem 'faker'
   gem 'i18n_generators'
   gem 'letter_opener_web'
@@ -62,7 +63,7 @@ gem 'net-pop'
 gem 'net-smtp'
 
 gem 'carrierwave'
-gem 'kaminari'
 gem 'devise'
 gem 'devise-i18n'
 gem 'image_processing', '~> 1.2'
+gem 'kaminari'
