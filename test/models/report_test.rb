@@ -16,6 +16,6 @@ class ReportTest < ActiveSupport::TestCase
   test '#created_on' do
     alice = users(:alice)
     alice_report = reports(:alice_report)
-    assert_equal Date.today, alice_report.created_at.to_date
+    assert_equal Time.zone.today, alice_report.created_at.to_date
   end
 end

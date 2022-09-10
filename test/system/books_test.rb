@@ -14,7 +14,15 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit books_url
+
     assert_selector 'h1', text: '本'
+    assert_selector 'th', text: 'タイトル'
+    assert_selector 'th', text: 'メモ'
+    assert_selector 'th', text: '著者'
+    assert_selector 'th', text: '画像'
+    assert_selector 'td', text: 'プロを目指す人のためのRuby入門'
+    assert_selector 'td', text: 'チェリー本'
+    assert_selector 'td', text: '伊藤さん'
   end
 
   test 'creating a Book' do

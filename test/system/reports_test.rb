@@ -16,6 +16,13 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
 
     assert_selector 'h1', text: '日報'
+    assert_selector 'th', text: 'タイトル'
+    assert_selector 'th', text: '作成者'
+    assert_selector 'th', text: '作成日'
+    assert_selector 'td', text: 'MyString1'
+    assert_selector 'td', text: 'alice@example.com'
+    assert_selector 'td', text: 'MyString2'
+    assert_selector 'td', text: 'bob@example.com'
   end
 
   test 'creating a Report' do
